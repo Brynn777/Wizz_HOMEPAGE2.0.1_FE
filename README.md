@@ -1,30 +1,37 @@
-# wizz
+# wizz官网页面
 
-> A Vue.js project
+> 一个学生组织的官网展示+后台管理页面，实现基本展示，动态管理
 
-## Build Setup
+技术栈：
+逻辑框架：Vue
+组件库：Ant-Design-Vue
+HTTP: axios
+云服务：qiniu
+其他：
+    Vue Router/NProgress/lodash管理路由，实现一定程度的交互体验和安全性
+    
+
+# 基本使用
 
 ``` bash
-# install dependencies
+## 安装依赖
 npm install
 
-# serve with hot reload at localhost:8080
+## 项目启动
 npm run dev
 
-# build for production with minification
+## 项目打包
 npm run build
 
-# build for production and view the bundle analyzer report
-npm run build --report
+# 后端联调
 
-# run unit tests
-npm run unit
+## 开发环境
+使用Webpack的proxyTable在本地开一个虚拟服务器代理转发所有/api开头的ajax请求解决跨域
+如需更改服务器请在config/index.js中修改api
 
-# run e2e tests
-npm run e2e
+## 生产环境
+注释src/api/url.js中proess.env.API_PATH
+替换成真实服务器地址
 
-# run all tests
-npm test
-```
 
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+
