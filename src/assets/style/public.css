@@ -1,0 +1,49 @@
+#app {
+    font-family: 'Avenir', Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    height:100%
+}
+.fullHeight{
+    height:100%
+}
+body{
+    margin:0px;
+    overflow:hidden
+}
+.wid24{
+    width:99%
+}
+.wid12{
+    width:49%
+}
+.wid8{
+    width:30%
+}
+.roundGraph{
+    border-radius: 50%;
+}
+img{
+    width:100%;
+    margin:2px 0;
+}
+.boldText{
+    font-size:1.2em;
+    font-weight:bold;
+}
+.normalText{
+    font-size:1em;
+}
+.wrapperS{
+    padding: 0 1em;
+}
+.wrapperL{
+    padding: 0 2em;
+}
+.wrapperV{
+    margin:2em 0;
+}
+.centerText{
+    text-align: center;
+    margin:1em 0;
+}

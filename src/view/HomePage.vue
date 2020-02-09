@@ -1,129 +1,185 @@
 <template>
     <div>
-        <a-row :gutter="2">
-            <a-col :span="24">
-                <img src="../assets/img/HomePage/first/1.jpg"  alt="成员合照">
-            </a-col>
-        </a-row>
-        
-        <a-row :gutter="2">
-            <a-col :span="12">
-                <img src="../assets/img/HomePage/first/2.jpg"  alt="成员合照">
-            </a-col>
-            <a-col :span="12">
-                <img src="../assets/img/HomePage/first/3.jpg"  alt="116">
-
-            </a-col>
-        </a-row>
-        <a-row :gutter="2">
-            <a-col :span="10">
-                <img src="../assets/img/HomePage/first/4.jpg"  alt="老师">
-            </a-col>
-        </a-row>
-        <a-row :gutter="2" >
-                
-                <a-col :span="24" style="position:relative" id="home1">
-                    <img src="../assets/img/char2.png" style="z-index:5" alt="插图">
+        <!-- 首页部分 -->
+        <div id="firstPage">
+            <a-row :gutter="2">
+                <a-col :span="24">
+                    <img src="../assets/img/HomePage/first/1.jpg"  alt="成员合照">
                 </a-col>
-        </a-row>
-        <br><br><br>
-        <div class="boldText">{{introduction[0]}}</div>
-        <div class="normalText">{{introduction[1]}}</div>
-        <div class="back2">
-            <a-row :gutter="0" >
-                <a-col :span="8">
-                    <img src="../assets/img/HomePage/second/1.png" class="wid24 round" alt="产品">
-                    <br><br>
-                    <img src="../assets/img/HomePage/second/3.jpg" class="wid24 round" alt="产品">
+            </a-row>
+            <a-row :gutter="2">
+                <a-col :span="12">
+                    <img src="../assets/img/HomePage/first/2.jpg"  alt="成员合照">
                 </a-col>
-                <a-col :span="16">
-                    <img src="../assets/img/HomePage/second/2.jpg" class="wid24 round" alt="产品">
+                <a-col :span="12">
+                    <img src="../assets/img/HomePage/first/3.jpg"  alt="116">
+                </a-col>
+            </a-row>
+            <a-row :gutter="2">
+                <a-col :span="10">
+                    <img src="../assets/img/HomePage/first/4.jpg"  alt="老师">
+                </a-col>
+            </a-row>
+            <a-row :gutter="2" >
+                    <a-col :span="24" style="position:relative" id="home1">
+                        <img src="../assets/img/char2.png" style="z-index:5" alt="插图">
+                    </a-col>
+            </a-row>
+        </div>
+        <!-- 介绍部分 -->
+        <div id="introduction">
+            <br><br><br>
+            <div class="boldText">{{introduction[0]}}</div>
+            <div class="normalText">{{introduction[1]}}</div>
+            <div class="backGround2">
+                <a-row :gutter="0" >
+                    <a-col :span="8">
+                        <img src="../assets/img/HomePage/second/1.png" class="wid24 roundGraph" alt="产品">
+                        <br><br>
+                        <img src="../assets/img/HomePage/second/3.jpg" class="wid24 roundGraph" alt="产品">
+                    </a-col>
+                    <a-col :span="16">
+                        <img src="../assets/img/HomePage/second/2.jpg" class="wid24 roundGraph" alt="产品">
+                    </a-col>
+                </a-row>
+                <br>
+                <div class="normalText" >{{introduction[2]}}</div>
+                <div class="normalText" v-html="introduction[3]" style="position:relative">{{introduction[3]}}</div>
+                <br><br>
+            </div>
+        </div>
+        <!-- 文化部分 -->
+        <div id="culture">
+            <br><br><br>
+            <a-row>
+                <a-col :xs="0" :sm="0" :md="3" :lg="3" :xl="3"></a-col>
+                <a-col :xs="24" :sm="24" :md="18" :lg="18" :xl="18">
+                    <img src="../assets/img/HomePage/fifth/culture.jpg" class="wid24" alt="为之文化">
+                </a-col>
+                <a-col :xs="0" :sm="0" :md="3" :lg="3" :xl="3"></a-col>
+            </a-row>
+        </div>
+        <!-- 历史部分 -->
+        <div id="history" style="width:96%">
+        <br><br><br><br>
+            <a-timeline mode="alternate">
+                <div v-for="(value, name, index) of storyWithYear" :key="name+value">
+                    <a-timeline-item>
+                        <a-icon slot="dot" type="clock-circle-o" style="font-size: 16px;color:black"/>
+                        <div class="boldText">{{name}}</div>
+                    </a-timeline-item>
+                    <a-timeline-item color="grey" mode="alternate" v-for="(subvalue, subname, subindex) of value" :key="subvalue.id">{{subvalue.storyDescribe}}</a-timeline-item>
+                </div>
+            </a-timeline>
+        </div>
+        <!-- 氛围建设部分 -->
+        <div id="atmospher">
+            <br><br><br>
+            <div class="backGround3">
+            <a-row :gutter="2" >
+                <a-col :span="12">
+                    <img src="../assets/img/HomePage/third/1.jpg" class="wid24" alt="场地">
+                </a-col>
+                <a-col :span="12">
+                <div class="boldText">{{atmos[0].name}}</div>
+                <div>{{atmos[0].detail}}</div>
                 </a-col>
             </a-row>
             <br>
-            <div class="normalText" >{{introduction[2]}}</div>
-            <div class="normalText" v-html="introduction[3]" style="position:relative">{{introduction[3]}}</div>
-            <br><br>
+            <a-row :gutter="2" type="flex" align="bottom">
+                <a-col :span="8">
+                    <img src="../assets/img/HomePage/third/2.jpg" class="wid24" alt="场地">
+                </a-col>
+            <a-col :span="8">
+                    <img src="../assets/img/HomePage/third/3.jpg" class="wid24" alt="场地">
+                </a-col>
+                <a-col :span="8">
+                    <img src="../assets/img/HomePage/third/4.jpg" class="wid24" alt="场地">
+                </a-col>
+            </a-row>
+            <div class="boldText wrapperS">{{atmos[1].name}}</div>
+            <div class="normalText wrapperL" v-html="atmos[1].detail">{{atmos[1].detail}}</div>
+            <div class="boldText wrapperS">{{atmos[2].name}}</div>
+            <div class="normalText wrapperL">{{atmos[2].detail}}</div>    
+            <a-row :gutter="2" >
+                <a-col :span="16">
+                </a-col>
+                <a-col :span="8">
+                    <img src="../assets/img/HomePage/third/5.jpg" class="wid24 roundGraph" alt="场地">
+                </a-col>
+            </a-row>
+            </div>  
         </div>
-          <br>
-        <!-- <a-row :gutter="8" >
-               <a-col :span="12">
-                <img src="../assets/img/HomePage/first/2.jpg"  alt="成员合照">
-            </a-col>
-        </a-row> --> 
-        <div class="back3">
-        
-        <a-row :gutter="2" >
-            <a-col :span="12">
-                <img src="../assets/img/HomePage/third/1.jpg" class="wid24" alt="场地">
-            </a-col>
-            <a-col :span="12">
-               <div class="boldText">{{atmos[0].name}}</div>
-               <div>{{atmos[0].detail}}</div>
-            </a-col>
-        </a-row>
-        <br>
-        <a-row :gutter="2" type="flex" align="bottom">
-            <a-col :span="8">
-                <img src="../assets/img/HomePage/third/2.jpg" class="wid24" alt="场地">
-            </a-col>
-           <a-col :span="8">
-                <img src="../assets/img/HomePage/third/3.jpg" class="wid24" alt="场地">
-            </a-col>
-            <a-col :span="8">
-                <img src="../assets/img/HomePage/third/4.jpg" class="wid24" alt="场地">
-            </a-col>
-        </a-row>
-        <div class="boldText">{{atmos[1].name}}</div>
-        <div class="normalText" v-html="atmos[1].detail">{{atmos[1].detail}}</div>
-        <div class="boldText">{{atmos[2].name}}</div>
-        <div class="normalText">{{atmos[2].detail}}</div>    
-        <a-row :gutter="2" >
-            <a-col :span="16">
-            </a-col>
-            <a-col :span="8">
-                <img src="../assets/img/HomePage/third/5.jpg" class="wid24 round" alt="场地">
-            </a-col>
-        </a-row>
-        <br><br>
-        </div>  
-        <div class="back4">
-        <a-row :gutter="16" >
-            <a-col :xs="22" :sm="22" :md="18" :lg="18" :xl="18">
-                <img src="../assets/img/HomePage/forth/1.png" class="wid24" alt="毕业">
-            </a-col>
-        </a-row>
-        <a-row :gutter="2" >
-            <a-col :span="12">
-            </a-col>
-            <a-col :span="12">
-                <img src="../assets/img/HomePage/forth/2.jpg" class="wid24" alt="毕业">
-            </a-col>
-        </a-row>
-        <a-row :gutter="2" >
-            <a-col :span="16">
-                <img src="../assets/img/HomePage/forth/3.png" class="wid24" alt="毕业">
-            </a-col>
-            <a-col :span="8">
-            </a-col>
-        </a-row>
-        <a-row :gutter="2" >
-            <a-col :span="12">
-            </a-col>
-            <a-col :span="12">
-                <img src="../assets/img/HomePage/forth/4.png" class="wid24" alt="">
-            </a-col>
-        </a-row>
+        <!-- 成员去向部分 -->
+        <div id="member">
+            <br><br><br>
+            <div class="backGround4">
+            <a-row>
+                <a-col :xs="0" :sm="0" :md="3" :lg="3" :xl="3"></a-col>
+                <a-col :xs="24" :sm="24" :md="18" :lg="18" :xl="18">
+                    <img src="../assets/img/HomePage/forth/1.png" class="wid24" alt="毕业去向">
+                </a-col>
+                <a-col :xs="0" :sm="0" :md="3" :lg="3" :xl="3"></a-col>
+            </a-row>
+            <a-row :gutter="2" >
+                <a-col :span="12">
+                </a-col>
+                <a-col :span="12">
+                    <img src="../assets/img/HomePage/forth/2.jpg" class="wid24" alt="毕业">
+                </a-col>
+            </a-row>
+            <a-row :gutter="2" >
+                <a-col :span="16">
+                    <img src="../assets/img/HomePage/forth/3.png" class="wid24" alt="毕业">
+                </a-col>
+                <a-col :span="8">
+                </a-col>
+            </a-row>
+            <a-row :gutter="2" >
+                <a-col :span="12">
+                </a-col>
+                <a-col :span="12">
+                    <img src="../assets/img/HomePage/forth/4.png" class="wid24" alt="">
+                </a-col>
+            </a-row>
+            </div>
         </div>
-        
     </div>
 </template>
 
 <script>
+import '../assets/style/public.css'
+import { getAllStories } from '../api/api'
 export default {
     name: 'HomePage',
-    data () {
+    created: function() {
+        this.fillInStory();
+    },
+    methods: {
+        fillInStory:function(){
+            getAllStories().then(res => {
+                let self = this;
+                this.storys = res.data;
+                this.storys.forEach(function(item){
+                    var temp = new Date(item.timeStamp*1000);
+                    item.year = temp.getFullYear();
+                })
+                this.storys.forEach(function(item){
+                    if(self.storyWithYear.hasOwnProperty(item.year)){
+                        self.storyWithYear[item.year].push(item);
+                    }else{
+                        self.$set(self.storyWithYear, item.year,[]);
+                        self.storyWithYear[item.year].push(item);
+                    }
+                })
+            });
+        },
+    },
+    data :function() {
         return {
+            storys:[],
+            storyWithYear:{
+            },
             introduction:[
                 "为之工作室成立于2017年11月,",
                 "是西安电子科技大学创新创业学院下属团队，入驻于星火众创空间二区211、212工作室。",
@@ -147,55 +203,30 @@ export default {
             memTo:[
                 "成员拥有丰富的互联网大厂实习经历，多数已成功进入一线互联网企业工作",
                 "同时，我们拥有充足的实习资源—内推、简历直达，连接各大互联网企业"
-            ]
+            ],
+            
         }
-    }
+    },
+
 }
 </script>
 
 <style scoped>
-.wid24{
-    width:99%
-}
-.wid12{
-    width:49%
-}
-.wid8{
-    width:30%
-}
-.round{
-    border-radius: 50%;
-}
-img{
-    width:100%;
-    margin:2px 0;
-}
-.asidePic{
-    opacity:0.3;
-    width:50%;
-    position:absolute
-
-}
-.boldText{
-    font-size:1.2em;
-    font-weight:bold;
-}
-.normalText{
-    font-size:1em;
-    
-}
-.back2{
+.backGround2{
     background:  url('../assets/img/back22.png') no-repeat bottom;
     background-size:100% 60%
 }
-.back3{
+.backGround3{
     background:  url('../assets/img/back3.png') no-repeat bottom;
     background-size:100% 50%
 }
-.back4{
+.backGround4{
     background:  url('../assets/img/back4.png') no-repeat bottom;
     background-size:100% 60%
 }
-
-
+.ant-timeline.ant-timeline-alternate .ant-timeline-item-left .ant-timeline-item-content{
+    left: 50%;
+    width: 40%;
+    text-align: left;
+}
 </style>
