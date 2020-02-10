@@ -1,4 +1,4 @@
-let api = 'http://47.100.137.42';
+let api = 'https://47.100.137.42:443';
 // let api = process.env.API_PATH;
 export default  {
     GET_AUTH: `${api}/api/auth/login`,

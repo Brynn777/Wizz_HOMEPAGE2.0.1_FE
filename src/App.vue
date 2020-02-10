@@ -117,8 +117,6 @@ export default {
           name: "产品",
           icon:"dropbox",
           detail: {
-            "#playGame": "约游戏",
-            "#rankOfLan": "编程语言排行",
             "#model": "模板"
           }
         },
