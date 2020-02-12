@@ -101,7 +101,6 @@ export default {
     // 页面改变，index页调用
     setChangePage(id) {
       this.changeId = id;
-      console.log("变成修改页面")
       getOneStory(id).then((res) => {
         this.form.setFieldsValue({
           storyName: res.data.name,
@@ -109,7 +108,6 @@ export default {
           month: this.$moment(res.data.timeStamp*1000),
         });
         this.setChangeStatus();
-        console.log(this.storyInfo);
       })
     },
     // 删除前的确认
@@ -156,7 +154,6 @@ export default {
     showHandleTip2(res, values, handleType) {
       this.$message.config({ top: `200px`, duration: 2 });
       if (res.status == 200) {
-        console.log(res);
         let self = this;
         this.$message.success(`事件“${values.storyName}”已成功${handleType}`);
         if(handleType == '添加') {

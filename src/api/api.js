@@ -156,7 +156,6 @@ export function deleteStory(id) {
  * 产品
  */
 export function getAllProducts() {
-    console.log("产品")
     return get({
         url: url.PRODUCT,
         method: 'get'

@@ -46,8 +46,6 @@ import { getLog } from "../../api/api.js";
     },
     methods: {
       handleTableChange(pagination) {
-        console.log("图表变化")
-        console.log(pagination);
         const pager = { ...this.pagination };
         pager.current = pagination.current;
         this.pagination = pager;
@@ -56,7 +54,6 @@ import { getLog } from "../../api/api.js";
       getData(size, index) {
         this.loading = true;
         getLog(size||10,index||1).then( res => {
-          console.log(res);
           const pagination = { ...this.pagination };
           pagination.total = res.data.LogTotalNum;
           this.loading = false;
@@ -65,8 +62,6 @@ import { getLog } from "../../api/api.js";
             file.showTime = `${time.getFullYear()}/${time.getMonth()+1}/${time.getDate()}`
             var handle = "";
             var type = "";
-            console.log("类别")
-            console.log(file.RequestURI.split('/')[2])
             if(file.RequestMethod == "POST") handle = "添加了";
             else if(file.RequestMethod == "DELETE") handle = "删除了";
             else if(file.RequestMethod == "PUT") handle = "修改了";
@@ -78,7 +73,6 @@ import { getLog } from "../../api/api.js";
           })
           this.data = res.data.logs;
           this.pagination = pagination;
-          console.log(this.data)
         })
       },
     },

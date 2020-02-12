@@ -12,18 +12,27 @@
                     <img src="../assets/img/HomePage/first/2.jpg"  alt="成员合照">
                 </a-col>
                 <a-col :span="12">
-                    <img src="../assets/img/HomePage/first/3.jpg"  alt="116">
+                    <img src="../assets/img/HomePage/first/3.jpg"  alt="活动室">
                 </a-col>
             </a-row>
-            <a-row :gutter="2">
-                <a-col :span="10">
+            <a-row type="flex" :gutter="2" justify="space-between" align="bottom">
+                <a-col :span="12">
                     <img src="../assets/img/HomePage/first/4.jpg"  alt="老师">
+                </a-col>
+                <a-col :span="12">
+                    <img src="../assets/img/HomePage/first/5.jpg"  alt="活动室">
                 </a-col>
             </a-row>
             <a-row :gutter="2" >
-                    <a-col :span="24" style="position:relative" id="home1">
-                        <img src="../assets/img/char2.png" style="z-index:5" alt="插图">
+                    <a-col :span="24" style="position:relative;float:right" id="home1">
+                        <div>
+                        <img src="../assets/img/char2.jpg" style="z-index:5;" alt="插图">
+                        </div>
+                        <div style="background:#ffb660">
+                        <div style="font-size:16px;font-weight:700;text-align:right;color:#ffffff">为之工作室——打造西电互联网的“黄埔军校”</div>
+                        </div>
                     </a-col>
+                    
             </a-row>
         </div>
         <!-- 介绍部分 -->
@@ -77,26 +86,24 @@
             <br><br><br>
             <div class="backGround3">
             <a-row :gutter="2" >
-                <a-col :span="12">
-                    <img src="../assets/img/HomePage/third/1.jpg" class="wid24" alt="场地">
-                </a-col>
-                <a-col :span="12">
+                <a-col :span="24">
                 <div class="boldText">{{atmos[0].name}}</div>
                 <div>{{atmos[0].detail}}</div>
                 </a-col>
             </a-row>
             <br>
-            <a-row :gutter="2" type="flex" align="bottom">
+            <a-row :gutter="2" type="flex" justify="space-around" align="bottom" style="text-align:center">
                 <a-col :span="8">
                     <img src="../assets/img/HomePage/third/2.jpg" class="wid24" alt="场地">
-                </a-col>
-            <a-col :span="8">
-                    <img src="../assets/img/HomePage/third/3.jpg" class="wid24" alt="场地">
+                    <div>海鲸小红花</div>
                 </a-col>
                 <a-col :span="8">
                     <img src="../assets/img/HomePage/third/4.jpg" class="wid24" alt="场地">
+                    <div>HelloWorld Rank</div>
+                    <div>编程语言排行篇</div>
                 </a-col>
             </a-row>
+            <br><br>
             <div class="boldText wrapperS">{{atmos[1].name}}</div>
             <div class="normalText wrapperL" v-html="atmos[1].detail">{{atmos[1].detail}}</div>
             <div class="boldText wrapperS">{{atmos[2].name}}</div>
@@ -117,7 +124,7 @@
             <a-row>
                 <a-col :xs="0" :sm="0" :md="3" :lg="3" :xl="3"></a-col>
                 <a-col :xs="24" :sm="24" :md="18" :lg="18" :xl="18">
-                    <img src="../assets/img/HomePage/forth/1.png" class="wid24" alt="毕业去向">
+                    <img src="../assets/img/HomePage/forth/1.jpg" class="wid24" alt="毕业去向">
                 </a-col>
                 <a-col :xs="0" :sm="0" :md="3" :lg="3" :xl="3"></a-col>
             </a-row>
@@ -182,14 +189,14 @@ export default {
             },
             introduction:[
                 "为之工作室成立于2017年11月,",
-                "是西安电子科技大学创新创业学院下属团队，入驻于星火众创空间二区211、212工作室。",
+                "是西电创新创业学院下属团队，汇聚互联网产品、技术、运营预备役从业者，拥有公司资质、独立的工作室和十余个独立工位，依托真实的互联网产品项目，不断发展创新。",
                 "我们是一个敢想敢做的团队，尊重团队里的每一个idea，聚焦专注而为之。",
                 "这让我们把为之做到了全校<strong>最有活力、容纳项目最多</strong>的团队。"
             ],
             atmos:[
                 {
-                    name:"家园环境：",
-                    detail:"为之家园——位于星火众创空间二区212、211工作区，拥有公司资质（为之信息互联有限公司）独立的工作室，wifi、空调、零食一应俱全。"
+                    name:"产品项目",
+                    detail:"自成立以来，众多互联网项目的真实产出，实践出了真实的人才培养机制"
                 },
                 {
                     name:"V-read 读书会",
@@ -212,6 +219,8 @@ export default {
 </script>
 
 <style scoped>
+div{margin:0;border:0;padding:0;}
+img{margin:0;border:0;padding:0;}
 .backGround2{
     background:  url('../assets/img/back22.png') no-repeat bottom;
     background-size:100% 60%

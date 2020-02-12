@@ -1,4 +1,4 @@
-let api = 'https://47.100.137.42:443';
+let api = 'https://wizzstudio.com:443';
 // let api = process.env.API_PATH;
 export default  {
     GET_AUTH: `${api}/api/auth/login`,

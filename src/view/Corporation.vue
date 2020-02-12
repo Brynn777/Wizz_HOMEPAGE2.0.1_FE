@@ -1,9 +1,9 @@
 <template>
-    <div id="teacher">
+    <div>
         <div class="wrapperS wrapperV">{{intro}}</div>
-        <a-card >
+        <a-card>
             <div v-for="(value, name, index) in teacher" :key="name" :style="{marginBottom: '1em'}">
-                <a-card :title="name" >
+                <a-card  :id="`teacher${index}`" :title="name" >
                     <a-row>
                         <a-col :xs="8" :sm="8" :md="4" :bg="4">
                             <img :src="value.img" :alt="name" class="width24 roundGraph">
@@ -53,7 +53,6 @@ export default {
         handleMember() {
             getAllMembers().then(res => {
                 if(res.status == 200) {
-                console.log(res);
                 let self = this;
                 self.memberList = [];
                 res.data.forEach(function(item){
@@ -65,7 +64,6 @@ export default {
                             }
                         })
                         self.memberList.push(item);
-                        console.log(self.memberList);
                     }
                 })
                 self.teacher={};

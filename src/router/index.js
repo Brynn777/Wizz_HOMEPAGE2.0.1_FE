@@ -132,7 +132,6 @@ router.beforeEach((to, from, next)=>{
       next({path: '/management/detail/story'});
     }
     NProgress.done();
-    // console.log(getToken('loginToken'));
   }
   next();
 })

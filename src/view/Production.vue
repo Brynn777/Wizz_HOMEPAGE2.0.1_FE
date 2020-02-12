@@ -53,7 +53,6 @@ export default {
         handleProduct() {
             getAllProducts().then(res => {
                 if(res.status == 200) {
-                    console.log(res);
                     let self = this;
                     self.productList = [];
                     res.data.forEach(function(item){
@@ -61,7 +60,6 @@ export default {
                         item.shot.pop();
                         self.productList.push(item);
                     })
-                    console.log(self.productList)
                 }
             })
         },

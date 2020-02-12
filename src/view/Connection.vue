@@ -1,6 +1,6 @@
 <template>
     <div>
-       <a-row type="flex" justify="space-around" align="bottom">
+       <a-row id="connect" type="flex" justify="space-around" align="bottom">
            <a-col :xs="10" :sm="10" :md="8" :lg="8" :xl="8">
                <img src="../assets/img/Connection/ConnectionWeiPub.jpg" alt="公众号">
                <div class="centerText">{{nameOne}}</div>
@@ -10,11 +10,10 @@
                <div class="centerText">{{nameTwo}}</div>
            </a-col>
        </a-row>
-       <a-row type="flex" justify="space-around">
+       <a-row id="profile" type="flex" justify="space-around">
            <a-col :xs="10" :sm="10" :md="8" :lg="8" :xl="8">
                <img src="../assets/img/Connection/ConnectWei.jpg" alt="简历投递">
                <div class="centerText">{{nameThree}}</div>
-               <div class="centerText" ><a-icon class="bigIcon" type="like" /></div>
            </a-col>
        </a-row>
         <img src="../assets/img/back5.jpg" alt="简历投递">

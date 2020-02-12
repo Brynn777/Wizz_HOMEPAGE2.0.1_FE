@@ -8,7 +8,7 @@
       <a-menu-item key="logmanagement" class="quaterItem" @click="topMenuLink($event)">操作日志</a-menu-item>
     </a-menu>
     <!-- 侧边抽屉 -->
-    <a-drawer :title="drawerTitle" :visible="drawerVisible" placement="right" >
+    <a-drawer :closable="false" :title="drawerTitle" :visible="drawerVisible" placement="right" >
       <template v-slot:handle v-if="buttonVisible">
         <div class="handle" @click="changeDrawer">
           <a-icon type="setting"></a-icon>
@@ -158,7 +158,6 @@ export default {
     handleStory() {
       getAllStories().then(res => {
         if(res.status == 200) {
-          console.log(res)
           let self = this;
           self.storyList = [];
           res.data.forEach(function(item){
@@ -178,7 +177,6 @@ export default {
     handleProduct() {
       getAllProducts().then(res => {
         if(res.status == 200) {
-          console.log(res);
           let self = this;
           self.productList = [];
           res.data.forEach(function(item){
@@ -191,7 +189,6 @@ export default {
     handleMember() {
       getAllMembers().then(res => {
         if(res.status == 200) {
-          console.log(res);
           let self = this;
           self.memberList = [];
           res.data.forEach(function(item){

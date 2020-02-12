@@ -141,8 +141,6 @@ export default {
       }
     })
     getDomain().then(res=>{
-      console.log("域名")
-      console.log(res)
       if(res.status == 200) {
         this.urlHost = `http://${res.data.domain}/`;
         if(res.data.place == "华东") {
@@ -161,20 +159,15 @@ export default {
       e.preventDefault();
       this.form.validateFields((err, values) => {
         if (!err) {
-          console.log("添加")
-          console.log(values);
           addMember(values.memberName, parseInt(values.schoolYear), values.memberDescribe,
                       parseInt(values.memberType.split('').pop()), values.teacherInfo, 
                       this.isEmptyArray(this.isArrayOrObject(values.memberUrlAvatar))[0].url)
                       .then((res) => {
-                        console.log(res);
                         this.showHandleTip2(res, values, '添加');
                         this.setAddStatus();
                       }, (err) => {
-                        console.log(err)
                       });
         } else {
-          console.log(err);
         } 
       });
     },
@@ -182,19 +175,14 @@ export default {
     change(id) {
       this.form.validateFields((err, values) => {
         if (!err) {
-          console.log("修改")
-          console.log(values)
           changeMember(values.memberName, parseInt(values.schoolYear), values.memberDescribe,
                       parseInt(values.memberType.split('').pop()), values.teacherInfo, 
                       this.isEmptyArray(this.isArrayOrObject(values.memberUrlAvatar))[0].url, id)
                       .then((res) => {
-                        console.log(res);
-                        this.showHandleTip2(res, values, '添加');
+                        this.showHandleTip2(res, values, '修改');
                       }, (err) => {
-                        console.log(err)
                       });
         } else {
-          console.log(err);
         } 
       });
     },
@@ -218,14 +206,12 @@ export default {
     // 删除成员
     delete(id) {
      return deleteMember(id).then((res) => {
-       console.log("删除");
         this.showHandleTip(res);
       })
     },
     //  页面改变，index页调用
     setChangePage (id, type) {
       this.changeId = id;
-      console.log(type);
       if (type == 0) {
         this.isTeacher = true;
         this.callName = "导师"
@@ -233,9 +219,7 @@ export default {
         this.isTeacher = false;
         this.callName = "成员"
       }
-      console.log(this.isTeacher);
       getMember(id).then((res) => {
-        console.log(res);
         this.form.setFieldsValue({
           memberName: res.data.Name,
           memberDescribe: res.data.Describe,
@@ -243,8 +227,6 @@ export default {
           teacherInfo: res.data.TeacherInfo,
           schoolYear: res.data.SchoolYear,
         });
-        console.log("学年")
-        console.log(res.data.schoolYear);
         this.listAvatar = [];
         if(res.data.UrlAvatar.length > 0) {
           this.listAvatar.push({
@@ -274,7 +256,6 @@ export default {
         this.tokenInfo.token = res.data;
         this.tokenInfo.key = filename;
       }, err => {
-        console.log(err);
       });
     },
     // 添加状态
@@ -323,7 +304,6 @@ export default {
     showHandleTip2(res, values, handleType) {
       this.$message.config({ top: `200px`, duration: 2 });
       if (res.status == 200) {
-        console.log(res);
         let self = this;
         this.$message.success(`人员“${values.memberName}”已成功${handleType}`);
         if(handleType == '添加') {

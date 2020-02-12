@@ -70,7 +70,6 @@ export default {
             this.username = values.userName;
             this.password = values.password;
             loginAsAdmin(this.username,this.password).then(res => {
-              console.log(res);
                 if(res.status == 200) {
                     setToken("loginToken", res.data.token);
                     router.push({name: "storymanagement"});
@@ -82,10 +81,7 @@ export default {
                     this.$message.config({top: `200px`,duration: 2,});
                     this.$message.info('服务器故障，请联系管理员');
                 }
-                console.log(res);
             });
-            console.log(this.username);
-            console.log(this.password);
         }
       });
     },

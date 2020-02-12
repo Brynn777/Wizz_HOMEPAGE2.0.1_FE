@@ -223,8 +223,6 @@ export default {
       }
     })
     getDomain().then(res=>{
-      console.log("域名")
-      console.log(res)
       if(res.status == 200) {
         this.urlHost = `http://${res.data.domain}/`;
         if(res.data.place == "华东") {
@@ -243,8 +241,6 @@ export default {
       e.preventDefault();
       this.form.validateFields((err, values) => {
         if (!err) {
-          console.log("添加")
-          console.log(values);
           var urls = '';
           if(this.isArrayOrObject(values.productUrlScreenshot).length > 0) {
             this.isArrayOrObject(values.productUrlScreenshot).forEach( file => {
@@ -257,14 +253,11 @@ export default {
                       this.isEmptyArray(this.isArrayOrObject(values.productUrlAvatar))[0].url, values.productUrlBackground, urls,
                       parseInt(values.productType.split('').pop()), this.isEmptyArray(this.isArrayOrObject(values.productUrlProCode))[0].url)
                       .then((res) => {
-                        console.log(res);
                         this.showHandleTip2(res, values, '添加');
                         this.setAddStatus();
                       }, (err) => {
-                        console.log(err)
                       });
                       } else {
-                        console.log(err);
                       } 
       });
     },
@@ -272,25 +265,23 @@ export default {
     change(id) {
       this.form.validateFields((err, values) => {
         if (!err) {
-          console.log("修改")
-          console.log(values)
           var urls = '';
-          this.isArrayOrObject(values.productUrlScreenshot).forEach( file => {
+          if(values.productUrlScreenshot.length>0){
+            this.isArrayOrObject(values.productUrlScreenshot).forEach( file => {
             urls += file.url;
             urls += '*';
           });
+          }
           this.isArrayOrObject(values.productUrlPartnerLogo)
           changeProduct(values.productName, values.productLittleDescribe, values.productDescribe,
-                        values.productPartner, this.isArrayOrObject(values.productUrlPartnerLogo)[0].url, 
-                        this.isArrayOrObject(values.productUrlAvatar)[0].url, values.productUrlBackground, urls,
-                        parseInt(values.productType.split('').pop()), this.isArrayOrObject(values.productUrlProCode)[0].url, id)
+                        values.productPartner, this.isEmptyArray(this.isArrayOrObject(values.productUrlPartnerLogo))[0].url, 
+                        this.isEmptyArray(this.isArrayOrObject(values.productUrlAvatar))[0].url, values.productUrlBackground, urls,
+                        parseInt(values.productType.split('').pop()), this.isEmptyArray(this.isArrayOrObject(values.productUrlProCode))[0].url, id)
                         .then((res) => {
                             this.showHandleTip2(res, values, '修改');
                         }, (err) => {
-                            console.log(err)
                         });
                         } else{
-                          console.log(err);
                         } 
       });
     },
@@ -321,7 +312,6 @@ export default {
     setChangePage (id) {
       this.changeId = id;
       getProduct(id).then((res) => {
-        console.log(res);
         this.form.setFieldsValue({
           productName: res.data.Name,
           productLittleDescribe: res.data.LittleDescribe,
@@ -385,7 +375,6 @@ export default {
         this.tokenInfo.token = res.data;
         this.tokenInfo.key = filename;
       }, err => {
-        console.log(err);
       });
     },
     // 添加状态
@@ -422,7 +411,6 @@ export default {
     showHandleTip2(res, values, handleType) {
       this.$message.config({ top: `200px`, duration: 2 });
       if (res.status == 200) {
-        console.log(res);
         let self = this;
         this.$message.success(`产品“${values.productName}”已成功${handleType}`);
         if(handleType == '添加') {

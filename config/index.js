@@ -12,7 +12,7 @@ module.exports = {
     assetsPublicPath: '/',
     proxyTable: {
       '/api': {
-        target: 'https://47.100.137.42:443',
+        target: 'https://wizzstudio.com:443',
         changeOrigin: true,
         pathRewrite: {
             '^/api': ''

@@ -161,7 +161,6 @@ export default {
         handleMember() {
             getAllMembers().then(res => {
                 if(res.status == 200) {
-                console.log(res);
                 let self = this;
                 self.memberList = [];
                 res.data.forEach(function(item){

@@ -54,8 +54,6 @@ export default {
   },
   methods: {
       showData: function(){
-          console.log("触发查看参数");
-          console.log(this.title);
       }
   },
   beforeCreate:function(){
