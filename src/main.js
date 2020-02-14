@@ -5,13 +5,15 @@ import 'ant-design-vue/dist/antd.css'
 import { Button, Card, DatePicker, Drawer, 
   Form, Input, InputNumber, Layout, Menu, 
   Pagination, Radio, Row,Select,TimePicker,
-  Timeline,message,Icon,Avatar,Col,Dropdown,List,Table,Cascader,Modal,Upload} from 'ant-design-vue'
+  Timeline,message,Icon,Avatar,Col,Dropdown,List,Table,Cascader,Modal,Upload,Collapse,Tooltip} from 'ant-design-vue'
 import App from './App'
 import router from './router'
 import moment from 'moment'
 
 Vue.config.productionTip = false
 Vue.use(Button)
+Vue.use(Tooltip)
+Vue.use(Collapse)
 Vue.use(Upload)
 Vue.use(Modal)
 Vue.use(Cascader)
@@ -36,6 +38,7 @@ Vue.use(Dropdown)
 Vue.use(List)
 Vue.use(Table)
 
+Vue.prototype.$confirm = Modal.confirm
 Vue.prototype.$message = message
 Vue.prototype.$moment = moment;
 

@@ -1,6 +1,17 @@
 <template >
   <div id="app">
-    <a-layout class="fullHeight">
+    <div v-if="visibleMenu" class="myMenu">
+      <a-icon  @click="setHideMenu" class="closeIcon" type="close" />
+      <a-menu mode="inline" :openKeys="openKeys" @openChange="onOpenChange" class="myMenuContent">
+      <a-sub-menu v-for="(value, name, index) of menu" :key="value.name">
+        <span class="menuText" slot="title"><span class="offsetTitle">{{value.name}}</span></span>
+        <a-menu-item @click="routerLink(name)" v-for="(subvalue, subname, subindex) of value.detail" :key="subvalue">
+           <a :href="subname">{{subvalue}}</a>
+        </a-menu-item>
+      </a-sub-menu>
+    </a-menu>
+    </div>
+    <a-layout :class="blurContent?'fullHeightBlur':'fullHeight'">
       <a-layout-header theme="light" class="topHeader" style="display:flex">
         <img src="./assets/img/wizzStudio.jpg" alt="为之logo" :class="triggerVisible ? 'topImageInMobile' :'topImageInPC'"/>
         <a-menu
@@ -22,27 +33,18 @@
             </a-menu-item>
           </a-sub-menu>
         </a-menu>
-        <a-dropdown style="position:absolute;right:40px" v-if="triggerVisible" placement="bottomCenter">
-        <a-icon style="font-size: 18px; line-height: 64px;" type="bars" />
-        <a-menu slot="overlay">
-          <a-sub-menu @click="routerLink(name)" v-for="(value, name, index) of menu" :key="value.name" :title="value.name">
-            <a-menu-item v-for="(subvalue, subname, subindex) of value.detail" :key="subvalue">
-              <a :href="subname">{{subvalue}}</a>
-            </a-menu-item>
-          </a-sub-menu>
-        </a-menu>
-      </a-dropdown>
+         <a-icon v-if="triggerVisible" @click="setShowMenu" style="position:absolute;right:40px;font-size: 18px; line-height: 64px;" type="bars" />
       </a-layout-header>
-        <a-layout class="fullHeight">
+      <a-layout class="fullHeight">
         <a-layout-sider @breakpoint="checkMobile" width="240" breakpoint="xl" theme="light" collapsedWidth="0" class="sideGeryBlockLeft" :trigger="null"></a-layout-sider>
         <a-layout-content theme="light" @click="touchCloseMenu">
           <div class="mainContent">
             <router-view />
           </div>
-          <img src="./assets/img/wei.png" class="roundLogo" @click="gotoManage"/>
+          <img src="./assets/img/wei.png" class="roundLogo" @click="gotoManagePage()"/>
         </a-layout-content>
-      <a-layout-sider width="240" breakpoint="xl" theme="light" collapsedWidth="0" class="sideGeryBlockRight" :trigger="null"></a-layout-sider>
-    </a-layout>
+        <a-layout-sider width="240" breakpoint="xl" theme="light" collapsedWidth="0" class="sideGeryBlockRight" :trigger="null"></a-layout-sider>
+      </a-layout>
     </a-layout>
   </div>
 </template>
@@ -55,11 +57,15 @@ export default {
   name: "App",
   data: function() {
     return {
+      blurContent:false,
+      visibleMenu:false,
+      rootSubmenuKeys: ['主页', '产品', '合作与导师', '成员', '联系我们', '后台管理'],
+      openKeys: [''],
+      gotoManagePage:this.gotoManage(3,this.realGotoManage),
       current: ['主页'],
       menuCollapsed: false,
       triggerVisible:true,
       menuName: ['主页', '产品', '合作与导师', '成员', '联系我们', '后台管理'],
-      openKeys: [''],
       //menu每个对象的name用于路由跳转，detail的name用于锚点定位
       menu: {
         "homepage":{
@@ -117,6 +123,24 @@ export default {
     });
   },
   methods: {
+    onOpenChange(openKeys) {
+        const latestOpenKey = openKeys.find(key => this.openKeys.indexOf(key) === -1);
+        if (this.rootSubmenuKeys.indexOf(latestOpenKey) === -1) {
+          this.openKeys = openKeys;
+        } else {
+          this.openKeys = latestOpenKey ? [latestOpenKey] : [];
+        }
+      },
+    setShowMenu(){
+      this.handleProduct();
+      this.handleMember();
+      this.visibleMenu=true;
+      this.blurContent = true;
+    },
+    setHideMenu(){
+      this.visibleMenu=false;
+      this.blurContent = false;
+    },
     //成员处理
     handleMember() {
       getAllMembers().then(res => {
@@ -164,7 +188,16 @@ export default {
     routerLink: function(data) {
       router.push({name: data})
     },
-    gotoManage(){
+    gotoManage(times,fn){
+      let count = 0;
+      return function() {
+        if(++count==times){
+          count = 0;
+          fn();
+        }
+      }
+    },
+    realGotoManage(){
       router.push({name:"login"});
     }
   }
@@ -172,25 +205,43 @@ export default {
 </script>
 
 <style scope>
+.myMenu{
+  z-index:999;
+  height:100%;
+  opacity: 0.7;
+  background:white;
+  position:fixed;
+  width:100%
+}
+.closeIcon{
+  position:absolute;
+  right:38px;
+  top:18px;
+  font-size:20px
+}
+.myMenuContent{
+  width: 100%;
+  text-align:center;
+  margin-top:80px
+}
+.menuText{
+  font-size:16px;
+  font-weight:700
+}
 .menuSider{
   background:white;
-  
 }
-ul li div span{
-  display: none;
+.ant-menu-inline .ant-menu-item::after{
+  border-right:0px 
 }
-ul li {
-  text-align: center;
+.ant-menu-submenu-inline > .ant-menu-submenu-title .ant-menu-submenu-arrow{
+  display:none;
 }
-/* .topHeaderBar {
-   background:#ffffff;
-   position: absolute;
-   z-index: 111;
-   padding:0; 
-   width:calc(100% - 600px);
- 
-   display:inline-block
-} */
+.offsetTitle{
+  position: relative;
+  right: -5px;
+}
+
 .topHeader {
    background:#ffffff;
    position: absolute;

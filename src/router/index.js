@@ -5,6 +5,7 @@ import HomePage from '../view/HomePage'
 import Corporation from '../view/Corporation'
 import Connection from '../view/Connection'
 import Member from '../view/Member'
+import Menu from '../view/Menu'
 import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
 import findLast from'lodash/findLast'
@@ -12,6 +13,14 @@ import { getToken } from '../api/api'
 Vue.use(Router)
 
 const routes = [
+  {
+    path: '/menu',
+    name: 'Menu',
+    component: Menu,
+    meta: {
+      requireAuth: false
+    }
+  },
   {
     path: '/homepage',
     name: 'homepage',

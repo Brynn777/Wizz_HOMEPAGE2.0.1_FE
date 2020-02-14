@@ -71,8 +71,8 @@ export default {
     // 添加事件
     add(e) {
       e.preventDefault();
-      this.form.validateFields((res, values) => {
-        if( values.storyName.length > 0 && values.storyDes.length > 0) {
+      this.form.validateFields((err, values) => {
+        if(!err) {
           addStory(values.month.unix(), values.storyName, values.storyDes)
           .then(res => {
               this.showHandleTip2(res, values, '添加');
@@ -84,11 +84,14 @@ export default {
     // 修改事件
     change(id) {
       this.form.validateFields((res, values) => {
+        console.log(values)
+        if(!err){
           changeStory(values.month.unix(), values.storyName, values.storyDes, id)
           .then(res => {
               this.showHandleTip2(res, values, '修改');
             }
           );
+        }
       });
     },
     // 删除事件

@@ -7,6 +7,10 @@
 .fullHeight{
     height:100%
 }
+.fullHeightBlur{
+    height:100%;
+    filter: blur(5px);
+}
 body{
     margin:0px;
     overflow:hidden
