@@ -1,5 +1,6 @@
 <template>
-    <div>
+    <div >
+        <!-- <button @click="testXML">测试</button> -->
         <!-- 首页部分 -->
         <div id="firstPage">
             <a-row :gutter="2">
@@ -184,6 +185,7 @@ export default {
     },
     data :function() {
         return {
+            test:false,
             storys:[],
             storyWithYear:{
             },
@@ -219,6 +221,9 @@ export default {
 </script>
 
 <style scoped>
+.red{
+    background: red
+}
 div{margin:0;border:0;padding:0;}
 img{margin:0;border:0;padding:0;}
 .backGround2{

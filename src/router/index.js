@@ -14,14 +14,6 @@ Vue.use(Router)
 
 const routes = [
   {
-    path: '/menu',
-    name: 'Menu',
-    component: Menu,
-    meta: {
-      requireAuth: false
-    }
-  },
-  {
     path: '/homepage',
     name: 'homepage',
     component: HomePage,

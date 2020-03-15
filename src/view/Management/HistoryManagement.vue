@@ -84,7 +84,6 @@ export default {
     // 修改事件
     change(id) {
       this.form.validateFields((res, values) => {
-        console.log(values)
         if(!err){
           changeStory(values.month.unix(), values.storyName, values.storyDes, id)
           .then(res => {

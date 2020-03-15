@@ -224,7 +224,7 @@ export default {
     })
     getDomain().then(res=>{
       if(res.status == 200) {
-        this.urlHost = `http://${res.data.domain}/`;
+        this.urlHost = `https://${res.data.domain}/`;
         if(res.data.place == "华东") {
           this.uploadHost = "//upload.qiniup.com/"
         } else if(res.data.place == "华北") {
@@ -257,8 +257,8 @@ export default {
                         this.setAddStatus();
                       }, (err) => {
                       });
-                      } else {
-                      } 
+        } else {
+        } 
       });
     },
     // 修改产品
@@ -266,13 +266,12 @@ export default {
       this.form.validateFields((err, values) => {
         if (!err) {
           var urls = '';
-          if(values.productUrlScreenshot.length>0){
+          if(this.isArrayOrObject(values.productUrlScreenshot).length > 0){
             this.isArrayOrObject(values.productUrlScreenshot).forEach( file => {
             urls += file.url;
             urls += '*';
           });
           }
-          this.isArrayOrObject(values.productUrlPartnerLogo)
           changeProduct(values.productName, values.productLittleDescribe, values.productDescribe,
                         values.productPartner, this.isEmptyArray(this.isArrayOrObject(values.productUrlPartnerLogo))[0].url, 
                         this.isEmptyArray(this.isArrayOrObject(values.productUrlAvatar))[0].url, values.productUrlBackground, urls,
@@ -281,8 +280,8 @@ export default {
                             this.showHandleTip2(res, values, '修改');
                         }, (err) => {
                         });
-                        } else{
-                        } 
+        } else{
+        } 
       });
     },
     // 转化成数组

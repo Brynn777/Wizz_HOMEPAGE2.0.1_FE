@@ -1,5 +1,5 @@
-// let api = 'https://wizzstudio.com:443';
-let api = process.env.API_PATH;
+let api = 'https://homepage.backend.wizzstudio.com';
+// let api = process.env.API_PATH;
 export default  {
     GET_AUTH: `${api}/api/auth/login`,
     STORY: `${api}/api/stories`,

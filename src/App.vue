@@ -1,15 +1,16 @@
 <template >
   <div id="app">
+    <!-- 手机上的菜单 -->
     <div v-if="visibleMenu" class="myMenu">
       <a-icon  @click="setHideMenu" class="closeIcon" type="close" />
       <a-menu mode="inline" :openKeys="openKeys" @openChange="onOpenChange" class="myMenuContent">
-      <a-sub-menu v-for="(value, name, index) of menu" :key="value.name">
-        <span class="menuText" slot="title"><span class="offsetTitle">{{value.name}}</span></span>
-        <a-menu-item @click="routerLink(name)" v-for="(subvalue, subname, subindex) of value.detail" :key="subvalue">
-           <a :href="subname">{{subvalue}}</a>
-        </a-menu-item>
-      </a-sub-menu>
-    </a-menu>
+        <a-sub-menu v-for="(value, name, index) of menu" :key="value.name">
+          <span class="menuText" slot="title"><span class="offsetTitle">{{value.name}}</span></span>
+          <a-menu-item @click="routerLink(name)" v-for="(subvalue, subname, subindex) of value.detail" :key="subvalue">
+            <a :href="subname">{{subvalue}}</a>
+          </a-menu-item>
+        </a-sub-menu>
+      </a-menu>
     </div>
     <a-layout :class="blurContent?'fullHeightBlur':'fullHeight'">
       <a-layout-header theme="light" class="topHeader" style="display:flex">
@@ -40,6 +41,12 @@
         <a-layout-content theme="light" @click="touchCloseMenu">
           <div class="mainContent">
             <router-view />
+            <hr>
+            <br>
+            <div style="text-align:center">
+              <a href="http://www.beianbeian.com/beianxinxi/e7a6df8d8380670643105bd84c3f5416.html" target="_blank">陕ICP备18022643号-1</a>
+            </div>
+            <br>
           </div>
           <img src="./assets/img/wei.png" class="roundLogo" @click="gotoManagePage()"/>
         </a-layout-content>
@@ -116,6 +123,10 @@ export default {
     };
   },
   mounted: function(){
+    if(window.location.href=='http://wizzstudio.com/'){
+      console.log("重定向")
+      window.location.href='https://wizzstudio.com/' 
+    }
     this.handleProduct();
     this.handleMember();
     window.addEventListener("beforeunload", function() {
@@ -147,9 +158,11 @@ export default {
         if(res.status == 200) {
           let self = this;
           self.menu.corporation.detail = {};
+          var j = 0;
           for( var i = 0; i < res.data.length; i++) {
             if(res.data[i].MemberType == 0){
-              self.$set(self.menu.corporation.detail,`#teacher${i}`,res.data[i].Name)
+              self.$set(self.menu.corporation.detail,`#teacher${j}`,res.data[i].Name)
+              j++
             }
           }
         }
