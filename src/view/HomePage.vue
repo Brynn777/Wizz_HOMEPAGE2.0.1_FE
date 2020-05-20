@@ -1,6 +1,6 @@
 <template>
     <div >
-        <!-- <button @click="testXML">测试</button> -->
+        <!-- <input type="text"> -->
         <!-- 首页部分 -->
         <div id="firstPage">
             <a-row :gutter="2">

@@ -40,7 +40,9 @@
         <a-layout-sider @breakpoint="checkMobile" width="240" breakpoint="xl" theme="light" collapsedWidth="0" class="sideGeryBlockLeft" :trigger="null"></a-layout-sider>
         <a-layout-content theme="light" @click="touchCloseMenu">
           <div class="mainContent">
+            <!-- <keep-alive> -->
             <router-view />
+            <!-- </keep-alive> -->
             <hr>
             <br>
             <div style="text-align:center">
@@ -123,10 +125,10 @@ export default {
     };
   },
   mounted: function(){
-    if(window.location.href=='http://wizzstudio.com/'){
-      console.log("重定向")
-      window.location.href='https://wizzstudio.com/' 
-    }
+    // if(window.location.protocol=='http:'){
+    //   console.log("重定向")
+    //   window.location.protocol='https:' 
+    // }
     this.handleProduct();
     this.handleMember();
     window.addEventListener("beforeunload", function() {
