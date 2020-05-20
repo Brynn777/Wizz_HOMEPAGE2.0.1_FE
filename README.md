@@ -8,10 +8,15 @@
 ## 技术栈：
 
 逻辑框架：Vue
+
 组件库：Ant-Design-Vue
+
 HTTP: Axios
+
 云服务：qiniu
+
 其他：
+
     Vue Router/NProgress/lodash
 
 ## 部署
@@ -25,9 +30,9 @@ git clone ...
 
 ## 使用
 
-![1](.\1.png)
+![展示页](.\1.png)
 
-![2](.\2.png)
+![后台管理页](.\2.png)
 
 ## 二次开发   
 
@@ -73,7 +78,7 @@ module.exports = {
 
 在开发环境下，将向本机的http请求代理转发到真实的服务器
 
-`api/xxx`->`http://121.36.214.41/clipLite`
+`api/xxx`->`https://homepage.backend.wizzstudio.com/xxx`
 
 ```
 proxyTable: {
@@ -82,7 +87,7 @@ proxyTable: {
           changeOrigin: true,//跨域
           pathRewrite: {
               '^/api': ''
-              //不用重写，如果接口全部带api的话
+              //不用重写，接口不是全部带api
           }
       }
 },
