@@ -3,6 +3,9 @@
         <!-- <input type="text"> -->
         <!-- 首页部分 -->
         <div id="firstPage">
+            <div @click="testthis" style="width:200px;border:1px solid red">outer
+                <span style="width:100px;border:1px solid red" data-id="123">inner</span>
+            </div>
             <a-row :gutter="2">
                 <a-col :span="24">
                     <img src="../assets/img/HomePage/first/1.jpg"  alt="成员合照">
@@ -164,6 +167,13 @@ export default {
         this.fillInStory();
     },
     methods: {
+        testthis(e) {
+            console.log(e);
+            console.log(e.target);
+            console.log(e.target.nodeName);
+            console.log(e.target.dataset)
+        },
+
         fillInStory:function(){
             getAllStories().then(res => {
                 let self = this;

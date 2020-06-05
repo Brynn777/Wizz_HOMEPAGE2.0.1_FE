@@ -30,9 +30,9 @@ git clone ...
 
 ## 使用
 
-![展示页](.\1.png)
+![展示页](https://github.com/Brynn777/Wizz_HOMEPAGE2.0.1_FE/blob/master/1.png)
 
-![后台管理页](.\2.png)
+![后台管理页](https://github.com/Brynn777/Wizz_HOMEPAGE2.0.1_FE/blob/master/2.png)
 
 ## 二次开发   
 

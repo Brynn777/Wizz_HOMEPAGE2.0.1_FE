@@ -7,8 +7,8 @@ import { Button, Card, DatePicker, Drawer,
   Pagination, Radio, Row,Select,TimePicker,
   Timeline,message,Icon,Avatar,Col,Dropdown,
   List,Table,Cascader,Modal,Upload,Collapse,Tooltip} from 'ant-design-vue'
-import App from './App'
-import router from './router'
+import App from '@/App'
+import router from '@/router'
 import moment from 'moment'
 
 Vue.config.productionTip = false

@@ -1,11 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Production from '../view/Production'
-import HomePage from '../view/HomePage'
-import Corporation from '../view/Corporation'
-import Connection from '../view/Connection'
-import Member from '../view/Member'
-import Menu from '../view/Menu'
+import HomePage from 'common/HomePage'
 import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
 import findLast from'lodash/findLast'
@@ -13,6 +8,10 @@ import { getToken } from '../api/api'
 Vue.use(Router)
 
 const routes = [
+  {
+    path: '/',
+    redirect:'/homepage'
+  },
   {
     path: '/homepage',
     name: 'homepage',
@@ -24,7 +23,8 @@ const routes = [
   {
     path: '/production',
     name: 'production',
-    component: Production,
+    component: () =>
+      import(/* webpackChunkName:"production" */"common/Production"),
     meta: {
       requireAuth: false,
     }
@@ -32,7 +32,8 @@ const routes = [
   {
     path: '/corporation',
     name: 'corporation',
-    component: Corporation,
+    component: () =>
+      import(/* webpackChunkName:"corporation" */"common/Corporation"),
     meta: {
       requireAuth: false,
     }
@@ -40,7 +41,8 @@ const routes = [
   {
     path: '/member',
     name: 'member',
-    component: Member,
+    component: () =>
+      import(/* webpackChunkName:"Member" */"common/Member"),
     meta: {
       requireAuth: false,
     }
@@ -48,7 +50,8 @@ const routes = [
   {
     path: '/connection',
     name: 'connection',
-    component: Connection,
+    component: () =>
+      import(/* webpackChunkName:"Connection" */"common/Connection"),
     meta: {
       requireAuth: false
     }
@@ -60,6 +63,10 @@ const routes = [
       requireAuth: true
     },
     component: { render: h => h("router-view") },
+    // render是一个函数 render: function(h)=>{ return h("router-view")}
+    // render()==h("router-view")
+    // Vue 在调用 render 方法时，会传入一个 createElement 函数作为参数
+    // 也就是这里的 h 的实参是 createElement 函数，然后 createElement 会以 APP 为参数进行调用
     children:[
       {
         path: '/management',
@@ -69,13 +76,13 @@ const routes = [
         path: '/management/login',
         name: 'login',
         component: () =>
-          import(/* webpackChunkName:"management" */"../view/Management/Login")
+          import(/* webpackChunkName:"management1" */"manage/Login")
+        // component: function(){return import('')}
       },
       {
         path: '/management/detail',
-        
         component :() =>
-          import(/* webpackChunkName:"management" */"../view/Management/index"),
+          import(/* webpackChunkName:"management2" */"manage/index"),
         children: [
           {
             path: '/management/detail',
@@ -85,25 +92,25 @@ const routes = [
             path: '/management/detail/story',
             name: 'storymanagement',
             component: () =>
-              import(/* webpackChunkName:"management" */"../view/Management/HistoryManagement")
+              import(/* webpackChunkName:"management3" */"manage/HistoryManagement")
           },
           {
             path: '/management/detail/member',
             name: 'membermanagement',
             component: () =>
-              import(/* webpackChunkName:"management" */"../view/Management/MemberManagement")
+              import(/* webpackChunkName:"management4" */"manage/MemberManagement")
           },
           {
             path: '/management/detail/product',
             name: 'productionmanagement',
             component: () =>
-              import(/* webpackChunkName:"management" */"../view/Management/ProductionManagement")
+              import(/* webpackChunkName:"management5" */"manage/ProductionManagement")
           },
           {
             path: '/management/detail/log',
             name: 'logmanagement',
             component: () =>
-              import(/* webpackChunkName:"management" */"../view/Management/LogManagement")
+              import(/* webpackChunkName:"management6" */"manage/LogManagement")
           }
         ]
       },
