@@ -34,9 +34,8 @@ git clone ...
 
 ![后台管理页](https://github.com/Brynn777/Wizz_HOMEPAGE2.0.1_FE/blob/master/2.png)
 
-## 二次开发   
+## 修改webpack配置   
 
-> 需要安装node和vue，此处是该项目搭建开发环境与打包，不需要进行二次开发的话无需关注
 
 
 ``` bash
