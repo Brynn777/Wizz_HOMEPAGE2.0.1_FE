@@ -5,9 +5,10 @@ const config = require('../config')
 const vueLoaderConfig = require('./vue-loader.conf')
 
 function resolve (dir) {
+  console.log("文件夹")
   return path.join(__dirname, '..', dir)
 }
-
+console.log("文件夹")
 
 
 module.exports = {
@@ -18,7 +19,7 @@ module.exports = {
   output: {
     path: config.build.assetsRoot,
     filename: '[name].js',
-    chunkFilename: '[name].[hash:8].js',
+    chunkFilename: '[name].[hash].js',
     publicPath: process.env.NODE_ENV === 'production'
       ? config.build.assetsPublicPath
       : config.dev.assetsPublicPath

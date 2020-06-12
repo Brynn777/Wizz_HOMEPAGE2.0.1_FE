@@ -2,8 +2,8 @@
     <div>
         <div class="wrapperS wrapperV">{{intro}}</div>
         <a-card>
-            <div v-for="(value, name, index) in teacher" :key="name" :style="{marginBottom: '1em'}">
-                <a-card  :id="`teacher${index}`" :title="name" >
+            <div :ref="`teacher${index}`" v-for="(value, name, index) in teacher" :key="name" :style="{marginBottom: '1em'}">
+                <a-card   :title="name" >
                     <a-row>
                         <a-col :xs="8" :sm="8" :md="4" :bg="4">
                             <img :src="value.img" :alt="name" class="width24 roundGraph">
@@ -21,6 +21,7 @@
 </template>
 
 <script>
+import router from "../router/index";
 import '../assets/style/public.css'
 import { getAllMembers } from '../api/api'
 export default {
@@ -34,7 +35,7 @@ export default {
             }
         }
     },
-    mounted: function() {
+    mounted(){
         this.handleMember();
     },
     methods:{

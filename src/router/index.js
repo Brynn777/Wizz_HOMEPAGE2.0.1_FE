@@ -24,7 +24,7 @@ const routes = [
     path: '/production',
     name: 'production',
     component: () =>
-      import(/* webpackChunkName:"production" */"common/Production"),
+      import(/* webpackChunkName: "production" */ "common/Production"),
     meta: {
       requireAuth: false,
     }
@@ -33,7 +33,7 @@ const routes = [
     path: '/corporation',
     name: 'corporation',
     component: () =>
-      import(/* webpackChunkName:"corporation" */"common/Corporation"),
+      import(/* webpackChunkName:"corporation" */ "common/Corporation"),
     meta: {
       requireAuth: false,
     }

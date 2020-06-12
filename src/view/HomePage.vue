@@ -2,10 +2,7 @@
     <div >
         <!-- <input type="text"> -->
         <!-- 首页部分 -->
-        <div id="firstPage">
-            <div @click="testthis" style="width:200px;border:1px solid red">outer
-                <span style="width:100px;border:1px solid red" data-id="123">inner</span>
-            </div>
+        <div ref="firstPage">
             <a-row :gutter="2">
                 <a-col :span="24">
                     <img src="../assets/img/HomePage/first/1.jpg"  alt="成员合照">
@@ -40,7 +37,7 @@
             </a-row>
         </div>
         <!-- 介绍部分 -->
-        <div id="introduction">
+        <div ref="introduction">
             <br><br><br>
             <div class="boldText">{{introduction[0]}}</div>
             <div class="normalText">{{introduction[1]}}</div>
@@ -62,7 +59,7 @@
             </div>
         </div>
         <!-- 文化部分 -->
-        <div id="culture">
+        <div ref="culture">
             <br><br><br>
             <a-row>
                 <a-col :xs="0" :sm="0" :md="3" :lg="3" :xl="3"></a-col>
@@ -73,7 +70,7 @@
             </a-row>
         </div>
         <!-- 历史部分 -->
-        <div id="history" style="width:96%">
+        <div ref="history" style="width:96%">
         <br><br><br><br>
             <a-timeline mode="alternate">
                 <div v-for="(value, name, index) of storyWithYear" :key="name+value">
@@ -86,7 +83,7 @@
             </a-timeline>
         </div>
         <!-- 氛围建设部分 -->
-        <div id="atmospher">
+        <div ref="atmospher">
             <br><br><br>
             <div class="backGround3">
             <a-row :gutter="2" >
@@ -122,7 +119,7 @@
             </div>  
         </div>
         <!-- 成员去向部分 -->
-        <div id="member">
+        <div ref="member">
             <br><br><br>
             <div class="backGround4">
             <a-row>
@@ -159,6 +156,7 @@
 </template>
 
 <script>
+import router from "../router/index";
 import '../assets/style/public.css'
 import { getAllStories } from '../api/api'
 export default {
@@ -167,13 +165,6 @@ export default {
         this.fillInStory();
     },
     methods: {
-        testthis(e) {
-            console.log(e);
-            console.log(e.target);
-            console.log(e.target.nodeName);
-            console.log(e.target.dataset)
-        },
-
         fillInStory:function(){
             getAllStories().then(res => {
                 let self = this;

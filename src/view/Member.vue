@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div id="memberFE" class="memberBack">
+        <div ref="memberFE" class="memberBack">
             <img
              src="../assets/img/Member/fe_be.png" 
              alt="前端"
@@ -25,7 +25,7 @@
             </a-col>
         </a-row>
         <br><br>
-        <div id="memberPD" class="memberBack">
+        <div ref="memberPD" class="memberBack">
             <img 
              src="../assets/img/Member/production.png" 
              alt=""
@@ -50,7 +50,7 @@
             </a-col>
         </a-row>
         <br><br>
-        <div id="memberBE" class="memberBack">
+        <div ref="memberBE" class="memberBack">
             <img 
              src="../assets/img/Member/fe_be.png" 
              alt=""
@@ -76,7 +76,7 @@
             </a-col>
         </a-row>
         <br><br>
-        <div id="memberOP" class="memberBack">
+        <div ref="memberOP" class="memberBack">
             <img
              src="../assets/img/Member/operate.png" 
              alt=""
@@ -106,6 +106,7 @@
 </template>
 
 <script>
+import router from "../router/index";
 import '../assets/style/public.css'
 import { getAllMembers } from '../api/api'
 export default {
