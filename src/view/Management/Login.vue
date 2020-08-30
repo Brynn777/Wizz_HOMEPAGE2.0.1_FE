@@ -1,6 +1,5 @@
 <template>
 <div>
-    <div class="tip">后台管理系统</div>
     <a-form
         :form="form"
         class="login-form"

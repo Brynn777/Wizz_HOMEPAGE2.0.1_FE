@@ -18,7 +18,7 @@
     <a-layout :class="blurContent?'fullHeightBlur':'fullHeight'">
       <a-layout-header theme="light" class="topHeader" style="display:flex">
         <img
-          src="./assets/img/wizzStudio.jpg"
+          src="./assets/img/wizzStudio2.jpg"
           alt="为之logo"
           :class="triggerVisible ? 'topImageInMobile' :'topImageInPC'"
         />
@@ -63,13 +63,16 @@
         <a-layout-content theme="light" @click="touchCloseMenu">
           <div class="mainContent">
             <keep-alive>
+              <div style="flex:1">
               <router-view ref="child" />
+
+              </div>
             </keep-alive>
             <hr />
             <br />
             <div style="text-align:center">
               <a
-                href="http://www.beianbeian.com/beianxinxi/e7a6df8d8380670643105bd84c3f5416.html"
+                href="https://beian.miit.gov.cn"
                 target="_blank"
               >陕ICP备18022643号-1</a>
             </div>
@@ -376,6 +379,8 @@ export default {
   height: calc(100% - 84px);
   background: white;
   overflow: auto;
+  display: flex;
+  flex-direction: column;
   /* border:1px solid red; */
 }
 .sideGeryBlockRight {
